@@ -225,7 +225,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         MaterialStateProperty.all<Color>(Colors.pink),
                   ),
                   child: const Text(
-                    'Sign In',
+                    'Sign up',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
