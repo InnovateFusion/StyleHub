@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../auth/presentation/pages/login.dart';
+
 class OnboardingPage extends StatefulWidget {
   @override
   _OnboardingPageState createState() => _OnboardingPageState();
@@ -122,7 +124,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to the login page with out push like make it a new page
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.pink),

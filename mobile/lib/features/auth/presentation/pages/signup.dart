@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mobile/features/auth/presentation/pages/signup.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
   @override
@@ -28,11 +27,11 @@ class _LoginPageState extends State<LoginPage> {
                 height: 76,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Sign In',
+                      'Sign Up',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF06164B),
@@ -42,19 +41,16 @@ class _LoginPageState extends State<LoginPage> {
                         height: 0.05,
                       ),
                     ),
-                    SizedBox(
-                      height: 40.0,
-                    ),
                     Text(
-                      'Hi! Welcome back, you’ve been missed',
+                      'Fill your information below or register with\n your social account',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF5A5D72),
                         fontSize: 16,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
-                        height: 0.09,
-                        letterSpacing: 0.50,
+                        height: 1.0,
+                        letterSpacing: 0.20,
                       ),
                     ),
                   ],
@@ -65,6 +61,72 @@ class _LoginPageState extends State<LoginPage> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            labelText: 'First Name',
+                            prefixIcon: const Icon(
+                              Icons.person,
+                              size: 16.0,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color(0xFFF7FBFD),
+                                  width: 1.0), // Change the border color here
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 78, 77, 77),
+                                  width: 0.5), // Change the border color here
+                            ),
+                            filled: true,
+                            fillColor: const Color(
+                                0xFFF7FBFD) // Change this to your desired color
+                            ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your First Name';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            labelText: 'Last Name',
+                            prefixIcon: const Icon(
+                              Icons.person,
+                              size: 16.0,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color(0xFFF7FBFD),
+                                  width: 1.0), // Change the border color here
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 78, 77, 77),
+                                  width: 0.5), // Change the border color here
+                            ),
+                            filled: true,
+                            fillColor: const Color(
+                                0xFFF7FBFD) // Change this to your desired color
+                            ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your Last Name ';
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: TextFormField(
@@ -92,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter your username';
+                            return 'Please enter your Last Name';
                           }
                           return null;
                         },
@@ -140,32 +202,7 @@ class _LoginPageState extends State<LoginPage> {
                         // Rest of your code...
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                          onPressed: () {
-                            // Navigate to the forgot password page
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.all(Colors
-                                .transparent), // Prevents the background color from changing
-                          ),
-                          child: const Text(
-                            'Forgot password?',
-                            style: TextStyle(
-                              color: Color(0xFF06164B),
-                              fontSize: 14,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w400,
-                              height: 0.10,
-                              letterSpacing: 0.25,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+
                     // Rest of your code...
                   ],
                 ),
@@ -309,29 +346,25 @@ class _LoginPageState extends State<LoginPage> {
                     .center, // Center the children horizontally
                 children: [
                   const Text(
-                    'Don’t have an account? ',
+                    'Already have an account? ',
                     style: TextStyle(
                       color: Color(0xFF06164B),
                       fontSize: 14,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400,
                       height: 0.10,
-                      letterSpacing: 0.25,
+                      letterSpacing: 0.50,
                     ),
                   ),
                   TextButton(
                     onPressed: () {
                       // Handle sign up
-                      //navigate to signup page
+                      //pop the current page
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignUpPage()),
-                      );
+                      Navigator.pop(context);
                     },
                     child: const Text(
-                      'Sign Up',
+                      'Sign in',
                       style: TextStyle(
                         color: Color(0xFFEE1E80),
                         fontSize: 16,
