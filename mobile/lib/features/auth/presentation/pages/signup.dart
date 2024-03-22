@@ -202,6 +202,48 @@ class _SignUpPageState extends State<SignUpPage> {
                         // Rest of your code...
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextFormField(
+                        obscureText: !_passwordVisible,
+                        decoration: InputDecoration(
+                            labelText: 'Confirm Password',
+                            prefixIcon: const Icon(
+                              Icons.lock,
+                              size: 16.0,
+                            ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                // Based on passwordVisible state choose the icon
+                                _passwordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Theme.of(context).primaryColorDark,
+                              ),
+                              onPressed: () {
+                                // Update the state i.e. toogle the state of passwordVisible variable
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color(0xFFF7FBFD),
+                                  width: 1.0), // Change the border color here
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 78, 77, 77),
+                                  width: 0.3), // Change the border color here
+                            ),
+                            filled: true,
+                            fillColor: const Color(0xFFF7FBFD)),
+                        // Rest of your code...
+                      ),
+                    ),
 
                     // Rest of your code...
                   ],

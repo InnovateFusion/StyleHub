@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/features/auth/presentation/pages/reset_password.dart';
+
 import 'package:mobile/features/auth/presentation/pages/signup.dart';
 
 class LoginPage extends StatefulWidget {
@@ -147,6 +149,12 @@ class _LoginPageState extends State<LoginPage> {
                         child: TextButton(
                           onPressed: () {
                             // Navigate to the forgot password page
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ResetPassword()),
+                            );
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.all(Colors
