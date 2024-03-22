@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mobile/features/auth/presentation/pages/verify.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -259,7 +260,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   onPressed: () {
                     // Validate returns true if the form is valid, or false otherwise.
                     if (_formKey.currentState!.validate()) {
-                      // Navigate to the home page
+                      // Navigate to the verify page
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Pininput()),
+                      );
                     }
                   },
                   style: ButtonStyle(
