@@ -2,22 +2,16 @@ import FooterLink from "./FooterLink";
 
 function FooterLinkGrid() {
   const array = [
-    ["About", "Contact", "Careers", "Press", "Blog", "Affiliates"],
-    [
-      "Company",
-      "Privacy Policy",
-      "Terms of Service",
-      "Refund Policy",
-      "Partners",
-    ],
-    ["Social", "Facebook", "Twitter", "Instagram", "Pinterest"],
+    ["About", "How It Works", "Featured", "Partnership", "Business Relations"],
+    ["Community", "Events", "Blog", "Podcast", "Teams"],
+    ["Social", "Discord", "Instagram", "Twitter", "Facebook"],
   ];
 
   return (
-    <div className=" flex flex-row gap-x-v-large justify-start items-start">
+    <div className="flex flex-row gap-x-10 md:gap-x-v-large justify-start items-start">
       {array.map((item, index) => {
         return (
-          <div key={index} className="flex flex-col gap-y-small">
+          <div key={index} className="flex flex-col gap-y-small prose-body-large">
             {item.map((subItem, subIndex) => {
               return (
                 <FooterLink

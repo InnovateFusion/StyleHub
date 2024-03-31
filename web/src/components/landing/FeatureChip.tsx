@@ -6,7 +6,9 @@ interface FeatureChipProps {
 export default function FeatureChip({ label, isSelected }: FeatureChipProps) {
   const color = isSelected ? "primary" : "onSurface";
   return (
-    <p className={`prose-headline-small text-${color}`}>
+    <p
+      className={`prose-title-medium md:prose-headline-small text-${color} whitespace-nowrap`}
+    >
       {label.toLocaleUpperCase()}
     </p>
   );

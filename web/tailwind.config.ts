@@ -163,6 +163,14 @@ const config: Config = {
             lineHeight: "44px",
           },
         },
+        "display-small-bold": {
+          css: {
+            fontSize: "28px",
+            fontStyle: "normal",
+            fontWeight: "600",
+            lineHeight: "44px",
+          },
+        },
       },
     },
   },

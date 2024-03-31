@@ -1,6 +1,6 @@
 const Logo = () => {
   return (
-    <p className="prose-display-medium-bold font-extrabold text-primary">
+    <p className="md:text-4xl md:font-semibold md:leading-13 text-3xl prose-display-medium-bold font-extrabold text-primary">
       STYLE <span className="text-onPrimaryContainer ">HUB</span>
     </p>
   );

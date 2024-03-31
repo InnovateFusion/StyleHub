@@ -8,7 +8,7 @@ interface ProductProps {
 
 export default function Product({ image, title, price }: ProductProps) {
   return (
-    <div className="flex flex-col w-[500px]">
+    <div className="flex flex-col w-full md:w-[350px]">
       <div className=" bg-primaryContainer">
         <Image src={image} alt={title} />
       </div>

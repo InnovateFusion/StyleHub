@@ -6,11 +6,11 @@ import FooterLinkGrid from "./component/FooterLinkGrid";
 
 export default function Footer() {
   return (
-    <div className=" flex flex-col px-[160px] py-vv-large bg-onSurfaceVariant  gap-y-vv-large ">
-      <div className=" flex flex-row justify-between">
-        <div className="flex flex-col gap-y-v-large w-[400px] ">
+    <div className="w-full flex flex-col px-5 md:px-[160px] md:py-vv-large py-v-large bg-onSurfaceVariant md:gap-y-vv-large gap-y-large">
+      <div className="flex md:flex-row flex-col justify-between items-start  gap-y-large">
+        <div className="flex flex-col md:gap-y-v-large gap-y-large w-full md:w-[400px]">
           <div className="flex flex-col gap-y-small">
-            <p className="prose-display-medium text-onPrimary">
+            <p className="prose-display-small md:prose-display-medium text-onPrimary">
               Let’s stay in touch
             </p>
             <p className="prose-body-large text-primaryContainer opacity-80">
@@ -31,11 +31,11 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-y-large   ">
+        <div className="flex flex-col gap-y-small md:gap-y-large">
           <div className="flex flex-col gap-y-small">
-            <p className="prose-display-medium text-onPrimary">Apps</p>
+            <p className="prose-display-small md:prose-display-medium text-onPrimary">Apps</p>
           </div>
-          <div className="flex flex-row gap-large ">
+          <div className="flex flex-row gap-large">
             <Link href="#">
               <Image src={appStore} width={150} height={50} alt="App store" />
             </Link>
@@ -46,8 +46,8 @@ export default function Footer() {
         </div>
         <FooterLinkGrid />
       </div>
-      <div className=" h-[1px] w-full bg-onPrimary opacity-10  " />
-      <div className="flex flex-row justify-between">
+      <div className="h-[1px] w-full bg-onPrimary opacity-10" />
+      <div className="flex md:flex-row flex-col justify-between">
         <p className="prose-body-large text-primaryContainer">
           ©2024 Multiverse. All rights reserved
         </p>

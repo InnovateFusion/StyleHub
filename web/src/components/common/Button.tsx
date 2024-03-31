@@ -9,9 +9,9 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ label, color, backgroundColor }) => {
   return (
     <button
-      className={`px-large py-small  ${backgroundColor}  rounded-[100px] `}
+      className={`px-large py-small  ${backgroundColor}  rounded-2xl `}
     >
-      <p className={`${color} prose-body-large py-xx-small `}>{label}</p>
+      <p className={`${color} prose-title-medium py-xx-small `}>{label}</p>
     </button>
   );
 };

@@ -9,10 +9,10 @@ const FooterLink = ({ name, isHeading }: FooterLinkProps) => {
   return (
     <>
       {isHeading ? (
-        <p className="text-onPrimary prose-headline-small ">{name}</p>
+        <p className="text-onPrimary md:prose-headline-small w-full">{name}</p>
       ) : (
         <Link href="#">
-          <p className="text-primaryContainer prose-body-large opacity-80 hover:opacity-100 hover:text-primary">
+          <p className="text-primaryContainer md:prose-body-large prose-body-medium opacity-80 hover:opacity-100 hover:text-primary">
             {name}
           </p>
         </Link>

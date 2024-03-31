@@ -3,16 +3,19 @@ import Image, { StaticImageData } from "next/image";
 interface CategoryProps {
   image: StaticImageData;
   title: string;
-  color: string;
 }
 
-export default function Category({ image, title, color }: CategoryProps) {
+export default function Category({ image, title}: CategoryProps) {
   return (
     <div
-      className={`w-[285px] h-[330px] py-x-large px-large flex flex-col gap-y-small items-center justify-center ${color}`}
+      className={`border-2 border-gray-200 rounded-3xl w-[250px] md:h-[250px] py-large md:py-x-large px-v-large md:px-large flex flex-col gap-y-small items-center justify-center`}
     >
-      <p className="prose-title-large text-primary">{title}</p>
-      <Image src={image} alt={title} />
+      <Image
+        src={image}
+        alt={title}
+        className="bg-slate-50 rounded-full w-3/4 h-3/4 object-fill"
+      />
+      <p className="prose-title-large">{title}</p>
     </div>
   );
 }
