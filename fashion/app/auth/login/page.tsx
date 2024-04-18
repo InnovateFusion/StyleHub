@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { UserAuthForm } from "./use-auth-form";
 
-export default function Login() {
+export default async function Login() {
   return (
     <>
       <div className="lg:p-8 h-screen  content-center">

@@ -2,6 +2,8 @@ import Link from "next/link";
 import Logo from "./Logo";
 import Search from "./Search";
 import { Button } from "../ui/button";
+import { ModeToggle } from "@/components/modetoggle";
+import NavbarButton from "./navbarButton";
 
 const Navbar = () => {
   return (
@@ -13,9 +15,8 @@ const Navbar = () => {
           <Link href="/shops">
             <Button variant="outline">Shops</Button>
           </Link>
-          <Link href="/signup">
-            <Button>Sign Up</Button>
-          </Link>
+          <NavbarButton />
+          <ModeToggle />
         </div>
       </div>
     </div>

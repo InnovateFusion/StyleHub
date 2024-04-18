@@ -6,11 +6,41 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Github, Loader2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useFormState, useFormStatus } from "react-dom";
+import loginAction from "./loginAction";
+import Link from "next/link";
+
+const loginFormSchema = z.object({
+  email: z.string({
+    required_error: "An email is required.",
+  }),
+  password: z.string({
+    required_error: "A password is required.",
+  }),
+});
+
+type LoginFormValues = z.infer<typeof loginFormSchema>;
+
+// This can come from your database or API.
+const defaultValues: Partial<LoginFormValues> = {
+  // name: "Your name",
+  // dob: new Date("2023-01-23"),
+};
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [errorMessage, dispatch] = useFormState(loginAction, undefined);
+
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues,
+  });
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
@@ -23,7 +53,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div className={cn("grid gap-6", className)} {...props}>
-      <form onSubmit={onSubmit}>
+      <form action={dispatch}>
         <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
@@ -31,6 +61,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               id="email"
               placeholder="name@example.com"
               type="email"
+              name="email"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
@@ -38,21 +69,27 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             />
           </div>{" "}
           <div className="grid gap-2">
-            <Label htmlFor="email">Password</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
+              id="password"
+              placeholder="Password"
+              type="password"
+              name="password"
+              autoComplete="current-password"
               disabled={isLoading}
             />
           </div>
-          <Button disabled={isLoading}>
-            {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Login
-          </Button>
+          <p className="text-sm text-muted-foreground flex justify-end gap-2">
+            <Link href="/auth/reset-password" className="text-primary hover:underline">
+              Forgot password?
+            </Link>
+          </p>
+          <div>
+            {errorMessage && (
+              <p className="text-red-600 dark:text-blue-800">{errorMessage}</p>
+            )}
+          </div>
+          <LoginButton />
         </div>
       </form>
       <div className="relative">
@@ -74,5 +111,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         GitHub
       </Button>
     </div>
+  );
+}
+
+function LoginButton() {
+  const { pending } = useFormStatus();
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (pending) {
+      event.preventDefault();
+    }
+  };
+
+  return (
+    <Button aria-disabled={pending} type="submit" onClick={handleClick}>
+      {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      Login
+    </Button>
   );
 }
