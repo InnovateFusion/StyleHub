@@ -20,10 +20,11 @@ const config = {
     extend: {
       colors: {
         // primary: "#EE1E80",
-        black: "#1A1B21",
         primaryContainer: "#F7FBFD",
         onPrimary: "#FFFFFF",
         // secondary: "#5A5D72",
+        Inverseonsurface: "#F2F0F7",
+        Outline: "#767680",
         onSurface: "#1A1B21",
         onPrimaryContainer: "#06164B",
         onSurfaceVariant: "#45464F",
