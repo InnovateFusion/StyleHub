@@ -1,0 +1,8 @@
+using backend.Domain.Entities.Common;
+
+namespace backend.Application.Contracts.Persistence.Repositories.Common;
+public interface IChatRepository: IGenericRepository<Chat>
+{
+    Task<IReadOnlyList<Chat>> GetAll(string senderId, string receiverId, int skip, int take);
+    Task<Chat> GetById(string id);
+}

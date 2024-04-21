@@ -78,6 +78,46 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                     product.ProductCategories.Add(productCategory);
                 }
             }
+            
+            if (request.Product.ImageIds != null && request.Product.ImageIds.Count > 0)
+            {
+                var images = await unitOfWork.ImageRepository.GetByIds(request.Product.ImageIds);
+
+                if (images == null || images.Count != request.Product.ImageIds.Count)
+                    throw new NotFoundException("image Not Found");
+
+                await unitOfWork.ProductImageRepository.DeleteByProductId(product.Id);
+
+                for (int i = 0; i < images.Count; i++)
+                {
+                    var productImage = new ProductImage
+                    {
+                        ProductId = product.Id,
+                        Image = images[i]
+                    };
+                    product.ProductImages.Add(productImage);
+                }
+            }
+            
+            if (request.Product.ImageIds != null && request.Product.ImageIds.Count > 0)
+            {
+                var images = await unitOfWork.ImageRepository.GetByIds(request.Product.ImageIds);
+
+                if (images == null || images.Count != request.Product.ImageIds.Count)
+                    throw new NotFoundException("image Not Found");
+
+                await unitOfWork.ProductImageRepository.DeleteByProductId(product.Id);
+
+                for (int i = 0; i < images.Count; i++)
+                {
+                    var productImage = new ProductImage
+                    {
+                        ProductId = product.Id,
+                        Image = images[i]
+                    };
+                    product.ProductImages.Add(productImage);
+                }
+            }
 
             if (request.Product.ColorIds != null && request.Product.ColorIds.Count > 0)
             {

@@ -24,7 +24,11 @@ namespace backend.Persistence.Repositories
         IProductCategoryRepository productCategoryRepository,
         IRoleRepository roleRepository,
         IUserRepository userRepository,
-        IImageRepository imageRepository)
+        IChatRepository chatRepository,
+        IImageRepository imageRepository,
+        IProductImageRepository productImageRepository
+        )
+    
         : IUnitOfWork
     {
         public IProductRepository ProductRepository
@@ -137,6 +141,16 @@ namespace backend.Persistence.Repositories
             }
         }
 
+        public IProductImageRepository ProductImageRepository
+        {
+            get
+            {
+                if (productImageRepository == null)
+                    productImageRepository = new ProductImageRepository(context);
+                return productImageRepository;
+            }
+        }
+
         public IRoleRepository RoleRepository
         {
             get
@@ -166,6 +180,18 @@ namespace backend.Persistence.Repositories
                 return imageRepository;
             }
         }
+        
+        public IChatRepository ChatRepository
+        {
+            get
+            {
+                if (chatRepository == null)
+                    chatRepository = new ChatRepository(context);
+                return chatRepository;
+            }
+        }
+        
+       
 
         public void Dispose()
         {

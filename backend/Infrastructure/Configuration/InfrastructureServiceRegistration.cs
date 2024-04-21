@@ -4,7 +4,9 @@ using backend.Application.Contracts.Infrastructure.Repositories;
 using backend.Application.Contracts.Infrastructure.Services;
 using backend.Infrastructure.Models;
 using backend.Infrastructure.Repository;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 
 namespace backend.Infrastructure.Configuration
 {
@@ -17,6 +19,7 @@ namespace backend.Infrastructure.Configuration
         )
         {
             var cloudinarySettings = new CloudinarySettings();
+            var rabbitMq = new RabbitMQSettings();
             if (hostEnvironment.IsDevelopment())
             {
                 services.Configure<EmailSettings>(options =>
@@ -42,16 +45,19 @@ namespace backend.Infrastructure.Configuration
                 cloudinarySettings.CloudName = configuration["CloudinarySettings:CloudName"];
                 cloudinarySettings.APIKey = configuration["CloudinarySettings:APIKey"];
                 cloudinarySettings.APISecret = configuration["CloudinarySettings:APISecret"];
+                
+                rabbitMq.Hostname = configuration["RabbitMQSettings:Hostname"] ?? "";
+                rabbitMq.Username = configuration["RabbitMQSettings:Username"] ?? "";
+                rabbitMq.Password = configuration["RabbitMQSettings:Password" ] ?? "";
+                
+                var redisConnectionString = configuration.GetConnectionString("Redis") ?? "";
 
                 services
-                    .AddAuthentication(
-                        Microsoft
-                            .AspNetCore
-                            .Authentication
-                            .JwtBearer
-                            .JwtBearerDefaults
-                            .AuthenticationScheme
-                    )
+                    .AddAuthentication(options =>
+                    {
+                        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    })
                     .AddJwtBearer(options =>
                     {
                         options.TokenValidationParameters = new TokenValidationParameters
@@ -66,7 +72,24 @@ namespace backend.Infrastructure.Configuration
                                 Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"] ?? "")
                             )
                         };
+                        
+                        options.Events = new JwtBearerEvents
+                        {
+                            OnMessageReceived = context =>
+                            {
+                                var accessToken = context.Request.Query["access_token"];
+                                var path = context.HttpContext.Request.Path;
+                                if (!string.IsNullOrEmpty(accessToken) &&
+                                    (path.StartsWithSegments("/chatHub")))
+                                {
+                                    context.Token = accessToken;
+                                }
+                                return Task.CompletedTask;
+                            }
+                        };
                     });
+                
+                services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }
             else
             {
@@ -106,6 +129,8 @@ namespace backend.Infrastructure.Configuration
                 var key = Encoding.ASCII.GetBytes(
                     Environment.GetEnvironmentVariable("JwtKey") ?? ""
                 );
+                
+                var redisConnectionString = Environment.GetEnvironmentVariable("Redis") ?? "";
 
                 services
                     .AddAuthentication(
@@ -156,18 +181,28 @@ namespace backend.Infrastructure.Configuration
                 cloudinarySettings.CloudName = Environment.GetEnvironmentVariable("CloudName");
                 cloudinarySettings.APIKey = Environment.GetEnvironmentVariable("APIKey");
                 cloudinarySettings.APISecret = Environment.GetEnvironmentVariable("APISecret");
+                
+                rabbitMq.Hostname = Environment.GetEnvironmentVariable("RabbitMqHostname") ?? "";
+                rabbitMq.Username = Environment.GetEnvironmentVariable("RabbitMqUsername") ?? "";
+                rabbitMq.Password = Environment.GetEnvironmentVariable("RabbitMqPassword") ?? "";
+                
+                services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }
-
+       
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddSingleton(CloudinaryConfiguration.Configure(cloudinarySettings));
+            services.AddSingleton(RabbitMqConfig.Configure(rabbitMq));
+            services.AddSingleton<RabbitMQ.Client.IModel>(provider => RabbitMqConfig.Configure(rabbitMq));
             services.AddHttpClient<PhoneNumberOTPManager>();
             services.AddHttpContextAccessor();
             services.AddSingleton<PhoneNumberOTPManager>();
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<ICurrentLoggedInService, CurrentLoggedInService>();
-
+            services.AddScoped<IRabbitMQService, RabbitMqService>();
+            services.AddHostedService<RabbitMqBackgroundService>();
+            services.AddSingleton<ICacheService, CacheService>();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("admin"));

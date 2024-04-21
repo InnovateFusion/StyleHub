@@ -1,27 +1,27 @@
 ﻿using backend.Application;
 using backend.Infrastructure.Configuration;
 using backend.Persistence.Configuration;
+using backend.WebApi.Controllers.RealTime;
 using backend.WebApi.Middlewares;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSignalR();
 builder.Services.ConfigurePersistenceService(builder.Configuration, builder.Environment);
 builder.Services.ConfigureInfrastructureService(builder.Configuration, builder.Environment);
 builder.Services.ConfigureApplicationServices();
 builder.Services.AddCors(opt =>
 {
-    opt.AddPolicy(
-        "AllowAnyOrigin",
-        policy =>
-        {
-            policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-        }
-    );
+    
+    opt.AddDefaultPolicy(builder => 
+        builder.SetIsOriginAllowed(_ => true)
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials());
 });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition(
@@ -64,7 +64,8 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseRouting();
+app.UseCors();
 app.UseAuthorization();
-app.UseCors("AllowAnyOrigin");
 app.MapControllers();
+app.MapHub<ChatHub>("/chatHub");
 app.Run();

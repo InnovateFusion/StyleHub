@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using backend.Domain.Common;
-using backend.Domain.Entities.Common;
 
 namespace backend.Domain.Entities.Product
 {

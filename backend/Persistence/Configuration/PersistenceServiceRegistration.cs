@@ -22,6 +22,7 @@ namespace backend.Persistence.Configuration
             {
                 services.AddDbContext<StyleHubDBContext>(options =>
                 {
+                    
                     options.UseMySQL(configuration.GetConnectionString("DefaultConnection")!);
                 });
             }
@@ -50,6 +51,8 @@ namespace backend.Persistence.Configuration
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IImageRepository, ImageRepository>();
+            services.AddScoped<IProductImageRepository, ProductImageRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
 
             return services;
         }

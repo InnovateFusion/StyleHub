@@ -1,4 +1,5 @@
 using AutoMapper;
+using backend.Application.DTO.Common.Chat.DTO;
 using backend.Application.DTO.Common.Image.DTO;
 using backend.Application.DTO.Common.Location.DTO;
 using backend.Application.DTO.Common.Role.DTO;
@@ -142,6 +143,7 @@ namespace backend.Application.Profiles
 			CreateMap<RegisterationResponseDTO, User>().ReverseMap();
 			CreateMap<ImageRepository, Image>().ReverseMap();
 			CreateMap<UserSharedResponseDTO, User>().ReverseMap();
+			CreateMap<User, UserChatResponseDTO>().ReverseMap();
 			CreateMap<UserResponseDTO, User>().ReverseMap()
 				.ForMember(
 					dest => dest.Role,
@@ -152,6 +154,30 @@ namespace backend.Application.Profiles
 							Name = src.Role.Name,
 							Description = src.Role.Description,
 							Code = src.Role.Code
+						})
+				);
+			CreateMap<CreateChatDTO, Chat>().ReverseMap();
+			CreateMap<ChatResponseDTO, Chat>().ReverseMap()
+				.ForMember(
+					dest => dest.Sender,
+					opt =>
+						opt.MapFrom(src => new UserChatResponseDTO
+						{
+							Id = src.Sender.Id,
+							FirstName = src.Sender.FirstName,
+							LastName = src.Sender.LastName,
+							ProfilePicture = src.Sender.ProfilePicture,
+						})
+				)
+				.ForMember(
+					dest => dest.Receiver,
+					opt =>
+						opt.MapFrom(src => new UserChatResponseDTO
+						{
+							Id = src.Receiver.Id,
+							FirstName = src.Receiver.FirstName,
+							LastName = src.Receiver.LastName,
+							ProfilePicture = src.Receiver.ProfilePicture 
 						})
 				);
 		}
