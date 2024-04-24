@@ -28,5 +28,12 @@ public class ChatRepository(StyleHubDBContext context): GenericRepository<Chat>(
             .FirstOrDefaultAsync(u => u.Id == id);
         return chat!;
     }
+
+    public async Task<IReadOnlyList<Domain.Entities.User.User>> GetUsersChat(string userId, int skip, int take)
+    {
+
+
+        return [];
+    }
 }
 

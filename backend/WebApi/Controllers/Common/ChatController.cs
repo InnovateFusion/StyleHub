@@ -1,5 +1,6 @@
 using System.Security.Claims;
 using backend.Application.DTO.Common.Chat.DTO;
+using backend.Application.DTO.User.UserDTO.DTO;
 using backend.Application.Features.Common_Features.Chat.Requests.Commads;
 using backend.Application.Features.Common_Features.Chat.Requests.Queries;
 using MediatR;
@@ -54,6 +55,20 @@ public class ChatController(IMediator mediator) : ControllerBase
     public async Task<ActionResult<ChatResponseDTO>> DeleteChat(string id)
     {
         var result = await mediator.Send(new DeleteChatByIdRequest{ Id = id });
+        return Ok(result);
+    }
+    
+    [HttpGet("Users")]
+    [Authorize]
+    public async Task<ActionResult<UserResponseDTO>> FetchUsersChat([FromQuery] int skip = 0 , [FromQuery] int take = 15)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var result = await mediator.Send(new GetUsersChatWithRequests
+        {
+            UserId = userId!,
+            Skip = skip,
+            Take = take 
+        });
         return Ok(result);
     }
 }

@@ -11,4 +11,5 @@ public class Chat: BaseEntity
     public virtual required User.User Sender { get; set; }
     [Required]
     public virtual required User.User Receiver { get; set; }
+    public bool IsRead { get; set; } = false;
 }

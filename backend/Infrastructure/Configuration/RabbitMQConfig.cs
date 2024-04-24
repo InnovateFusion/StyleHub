@@ -9,7 +9,7 @@ namespace backend.Infrastructure.Configuration
         {
            
             
-            var factory = new ConnectionFactory { HostName = apiSettings.Hostname, UserName = apiSettings.Username, Password = apiSettings.Password };
+            var factory = new ConnectionFactory { HostName = apiSettings.Hostname, UserName = apiSettings.Username, Password = apiSettings.Password};
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
             return channel;
