@@ -6,10 +6,10 @@ namespace backend.Infrastructure.Repository
 {
     public class CacheService(IConnectionMultiplexer redis) : ICacheService
     {
-        public async Task Add<T>(string key, T value, TimeSpan expirationTime = default)
+        public async Task Add<T>(string key, T value)
         {
             var db = redis.GetDatabase();
-            await db.StringSetAsync(key, JsonSerializer.Serialize(value), expirationTime);
+            await db.StringSetAsync(key, JsonSerializer.Serialize(value));
         }
 
         public async Task<T> Get<T>(string key)
@@ -25,6 +25,7 @@ namespace backend.Infrastructure.Repository
             await db.KeyDeleteAsync(key);
         }
         
+
         public async Task AddToSet(string key, string value)
         {
             var db = redis.GetDatabase();
@@ -41,6 +42,12 @@ namespace backend.Infrastructure.Repository
         {
             var db = redis.GetDatabase();
             return db.SetMembers(key).Select(x => x.ToString());
+        }
+        
+        public async Task<bool> KeyExists(string key)
+        {
+            var db = redis.GetDatabase();
+            return await db.KeyExistsAsync(key);
         }
         
     }

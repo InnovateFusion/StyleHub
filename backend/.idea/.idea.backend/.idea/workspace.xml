@@ -8,15 +8,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":sparkles: Add realtime feature">
-      <change afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Queries/GetUsersChatWithHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Requests/Queries/GetUsersChatWithRequests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Common/IChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Common/IChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/Common/Chat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Common/Chat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/RabbitMQConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/RabbitMQConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Models/RabbitMQSettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Models/RabbitMQSettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Common/ChatRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Common/ChatRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/Common/ChatController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/Common/ChatController.cs" afterDir="false" />
+    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":art: refactor code">
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/DTO/RealTimeChatDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/DTO/RealTimeChatUserDataDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Infrastructure/Services/ICacheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Infrastructure/Services/ICacheService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DTO/Common/Chat/Validations/CreateChatDTOValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/Validations/CreateChatDTOValidation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repository/CacheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repository/CacheService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repository/RabbitMqBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repository/RabbitMqBackgroundService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/RealTime/ChatHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/RealTime/ChatHub.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a36fb3c61e3f4789a347775892b62327e000/ea/cd43eb9a/BackgroundService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/38/e5b6206b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Receive/Receive.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Domain/Entities/Common/Chat.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -113,7 +115,11 @@
       <workItem from="1713717024580" duration="2890000" />
       <workItem from="1713724033488" duration="1343000" />
       <workItem from="1713747885845" duration="12127000" />
-      <workItem from="1713977890573" duration="3403000" />
+      <workItem from="1713977890573" duration="4806000" />
+      <workItem from="1714049815491" duration="4202000" />
+      <workItem from="1714055720726" duration="7756000" />
+      <workItem from="1714063531812" duration="4629000" />
+      <workItem from="1714124081688" duration="460000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />
@@ -131,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713718230055</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=":art: refactor code">
+      <option name="closed" value="true" />
+      <created>1713982584525</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713982584525</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +195,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value=":art: Refactor code" />
     <MESSAGE value=":sparkles: Add realtime feature" />
-    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: Add realtime feature" />
+    <MESSAGE value=":art: refactor code" />
+    <option name="LAST_COMMIT_MESSAGE" value=":art: refactor code" />
   </component>
 </project>

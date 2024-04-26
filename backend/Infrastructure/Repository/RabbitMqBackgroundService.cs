@@ -20,24 +20,25 @@ public class RabbitMqBackgroundService(
     protected override Task ExecuteAsync(CancellationToken stoppingToken)
     {
         stoppingToken.ThrowIfCancellationRequested();
-
+        
         channel.QueueDeclare(queue: "chat",
             durable: false,
             exclusive: false,
             autoDelete: false,
             arguments: null);
-
+        
         var consumer = new EventingBasicConsumer(channel);
         consumer.Received += async (model, ea) =>
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            var chatResponse = JsonConvert.DeserializeObject<ChatResponseDTO>(message);
-            await BroadcastToUser(chatResponse.Sender.Id, message);
-            await BroadcastToUser(chatResponse.Receiver.Id, message);
+            var chatResponse = JsonConvert.DeserializeObject<RealTimeChatDTO>(message);
+            await BroadcastToUser(chatResponse.Sender.id, message);
+            await BroadcastToUser(chatResponse.Receiver.id, message);
+            //await BroadcastToUser(chatResponse.Receiver.Id, message);
             Console.WriteLine(" [x] Received {0}", message);
         };
-
+        
         channel.BasicConsume(queue: "chat",
             autoAck: true,
             consumer: consumer);
@@ -52,6 +53,5 @@ public class RabbitMqBackgroundService(
         {
             await hubContext.Clients.Client( connectionId).SendAsync("ReceiveMessage", message);
         }
-        
     }
 }

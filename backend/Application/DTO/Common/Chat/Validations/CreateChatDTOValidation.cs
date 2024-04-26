@@ -6,13 +6,10 @@ namespace backend.Application.DTO.Common.Chat.Validations;
 
 public class CreateChatDtoValidation: AbstractValidator<CreateChatDTO>
 {
-    IUserRepository _userRepository;
     string[] Type = { "text", "image"};
 
-    public CreateChatDtoValidation(IUserRepository UserRepository)
+    public CreateChatDtoValidation()
     {
-        _userRepository = UserRepository;
-
         RuleFor(x => x.Message)
             .NotNull()
             .WithMessage("Message is required")
@@ -26,19 +23,5 @@ public class CreateChatDtoValidation: AbstractValidator<CreateChatDTO>
             .WithMessage("Type cannot be empty")
             .Must(x => Type.Contains(x))
             .WithMessage("Type must be text or image");
-
-        RuleFor(x => x.ReceiverId)
-            .NotEmpty()
-            .When(x => x.ReceiverId != null)
-            .WithMessage("ReceiverId cannot be empty")
-            .MustAsync(
-                async (receiverId, cancellation) =>
-                {
-                    if (receiverId == null)
-                        return true;
-                    return await _userRepository.GetById(receiverId) != null;
-                }
-            ).When(x => x.ReceiverId != null)
-            . WithMessage("ReceiverId does not exist");
     }
 }
