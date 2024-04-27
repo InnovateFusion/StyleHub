@@ -8,16 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":art: refactor code">
-      <change afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/DTO/RealTimeChatDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/DTO/RealTimeChatUserDataDTO.cs" afterDir="false" />
+    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix chat delay">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Contracts/Infrastructure/Services/ICacheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Infrastructure/Services/ICacheService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DTO/Common/Chat/Validations/CreateChatDTOValidation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Common/Chat/Validations/CreateChatDTOValidation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repository/CacheService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repository/CacheService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repository/RabbitMqBackgroundService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repository/RabbitMqBackgroundService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/RealTime/ChatHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/RealTime/ChatHub.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +24,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a36fb3c61e3f4789a347775892b62327e000/ea/cd43eb9a/BackgroundService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/38/e5b6206b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Receive/Receive.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Domain/Entities/Common/Chat.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Repository/CacheService.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -119,7 +111,7 @@
       <workItem from="1714049815491" duration="4202000" />
       <workItem from="1714055720726" duration="7756000" />
       <workItem from="1714063531812" duration="4629000" />
-      <workItem from="1714124081688" duration="460000" />
+      <workItem from="1714124081688" duration="1973000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />
@@ -145,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713982584525</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=":bug: fix chat delay">
+      <option name="closed" value="true" />
+      <created>1714124627469</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1714124627469</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +196,7 @@
     <MESSAGE value=":art: Refactor code" />
     <MESSAGE value=":sparkles: Add realtime feature" />
     <MESSAGE value=":art: refactor code" />
-    <option name="LAST_COMMIT_MESSAGE" value=":art: refactor code" />
+    <MESSAGE value=":bug: fix chat delay" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix chat delay" />
   </component>
 </project>

@@ -14,7 +14,6 @@ using backend.Application.DTO.User.UserDTO.DTO;
 using backend.Domain.Entities.Common;
 using backend.Domain.Entities.Product;
 using backend.Domain.Entities.User;
-using backend.Infrastructure.Repository;
 
 namespace backend.Application.Profiles
 {
@@ -141,7 +140,7 @@ namespace backend.Application.Profiles
 			CreateMap<AuthenticationResponseDTO, User>().ReverseMap();
 			CreateMap<LoginRequestDTO, User>().ReverseMap();
 			CreateMap<RegisterationResponseDTO, User>().ReverseMap();
-			CreateMap<ImageRepository, Image>().ReverseMap();
+			CreateMap<ImageResponseDTO, Image>().ReverseMap();
 			CreateMap<UserSharedResponseDTO, User>().ReverseMap();
 			CreateMap<User, UserChatResponseDTO>().ReverseMap();
 			CreateMap<UserResponseDTO, User>().ReverseMap()

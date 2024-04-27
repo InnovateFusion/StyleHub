@@ -4,9 +4,9 @@ using backend.Application.DTO.Common.Image.DTO;
 using backend.Application.DTO.Common.Image.Validations;
 using backend.Application.Exceptions;
 using backend.Application.Features.Common_Features.Image.Requests.Commands;
-using backend.Application.Response;
+using backend.Application.Contracts.Infrastructure.Repositories;
 using MediatR;
-using IImageRepository = backend.Application.Contracts.Infrastructure.Repositories.IImageRepository;
+using backend.Application.Response;
 
 namespace backend.Application.Features.Common_Features.Image.Handlers.Commads
 {
@@ -33,12 +33,13 @@ namespace backend.Application.Features.Common_Features.Image.Handlers.Commads
 
 			var _image = new Domain.Entities.Common.Image
 			{
-				ImageUrl = request.Image.Base64Image,
+				ImageUrl = "c ",
 				User = user
 			};
-			_image.ImageUrl = await imageRepository.Upload(request.Image.Base64Image, _image.Id);
-			await unitOfWork.ImageRepository.Add(_image);
-
+			//_image.ImageUrl = await imageRepository.Upload(request.Image.Base64Image, _image.Id);
+			
+			_image = await unitOfWork.ImageRepository.Add(_image);
+			
 			return new BaseResponse<ImageResponseDTO>
 			{
 				Message = "Image Uploaded Successfully",
