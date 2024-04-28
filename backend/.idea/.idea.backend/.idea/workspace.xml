@@ -8,11 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix chat delay">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Image/Handlers/Commads/UploadImageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Image/Handlers/Commads/UploadImageHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/Common/ImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/Common/ImageController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix image upload bug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +22,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a36fb3c61e3f4789a347775892b62327e000/ea/cd43eb9a/BackgroundService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/38/e5b6206b/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Receive/Receive.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Repository/CacheService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/kena/Desktop/StyleHub/backend/WebApi/Controllers/Common/ImageController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -114,7 +110,7 @@
       <workItem from="1714055720726" duration="7756000" />
       <workItem from="1714063531812" duration="4629000" />
       <workItem from="1714124081688" duration="1973000" />
-      <workItem from="1714301711329" duration="3225000" />
+      <workItem from="1714301711329" duration="3704000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />
@@ -148,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714124627469</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=":bug: fix image upload bug">
+      <option name="closed" value="true" />
+      <created>1714305013529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1714305013529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +204,7 @@
     <MESSAGE value=":sparkles: Add realtime feature" />
     <MESSAGE value=":art: refactor code" />
     <MESSAGE value=":bug: fix chat delay" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix chat delay" />
+    <MESSAGE value=":bug: fix image upload bug" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix image upload bug" />
   </component>
 </project>
