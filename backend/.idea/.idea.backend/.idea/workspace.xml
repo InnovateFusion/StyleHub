@@ -10,6 +10,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix chat delay">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Image/Handlers/Commads/UploadImageHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Image/Handlers/Commads/UploadImageHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/Common/ImageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/Common/ImageController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +114,7 @@
       <workItem from="1714055720726" duration="7756000" />
       <workItem from="1714063531812" duration="4629000" />
       <workItem from="1714124081688" duration="1973000" />
+      <workItem from="1714301711329" duration="3225000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />

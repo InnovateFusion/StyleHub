@@ -33,10 +33,11 @@ namespace backend.Application.Features.Common_Features.Image.Handlers.Commads
 
 			var _image = new Domain.Entities.Common.Image
 			{
-				ImageUrl = "c ",
+				ImageUrl = "Image",
 				User = user
 			};
-			//_image.ImageUrl = await imageRepository.Upload(request.Image.Base64Image, _image.Id);
+			
+			_image.ImageUrl = await imageRepository.Upload(request.Image.Base64Image, _image.Id);
 			
 			_image = await unitOfWork.ImageRepository.Add(_image);
 			
@@ -44,7 +45,11 @@ namespace backend.Application.Features.Common_Features.Image.Handlers.Commads
 			{
 				Message = "Image Uploaded Successfully",
 				Success = true,
-				Data = mapper.Map<ImageResponseDTO>(_image)
+				Data = new ImageResponseDTO
+				{
+					Id = _image.Id,
+					ImageUrl = _image.ImageUrl
+				}
 			};
 		}
 	}
