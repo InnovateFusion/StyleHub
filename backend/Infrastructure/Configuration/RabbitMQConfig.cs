@@ -7,9 +7,7 @@ namespace backend.Infrastructure.Configuration
     {
         public static RabbitMQ.Client.IModel Configure(RabbitMQSettings apiSettings)
         {
-           
-            
-            var factory = new ConnectionFactory { HostName = apiSettings.Hostname, UserName = apiSettings.Username, Password = apiSettings.Password};
+            var factory = new ConnectionFactory { HostName = apiSettings.Hostname, UserName = apiSettings.Username, Password = apiSettings.Password, Port = apiSettings.Port};
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
             return channel;

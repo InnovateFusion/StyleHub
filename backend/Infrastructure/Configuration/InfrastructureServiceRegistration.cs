@@ -49,6 +49,7 @@ namespace backend.Infrastructure.Configuration
                 rabbitMq.Hostname = configuration["RabbitMQSettings:Hostname"] ?? "";
                 rabbitMq.Username = configuration["RabbitMQSettings:Username"] ?? "";
                 rabbitMq.Password = configuration["RabbitMQSettings:Password" ] ?? "";
+                rabbitMq.Port = int.Parse(configuration["RabbitMQSettings:Port"] ?? "5672");
                 
                 var redisConnectionString = configuration.GetConnectionString("Redis") ?? "";
 
@@ -88,6 +89,8 @@ namespace backend.Infrastructure.Configuration
                             }
                         };
                     });
+                Console.WriteLine(
+                    "Redis: " + configuration.GetConnectionString("Redis"));
                 
                 services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }
@@ -174,10 +177,15 @@ namespace backend.Infrastructure.Configuration
                 Console.WriteLine(
                     "CloudinarySettings: " + Environment.GetEnvironmentVariable("APISecret")
                 );
+                Console.WriteLine("RabbitMQSettings: " + Environment.GetEnvironmentVariable("RabbitMqHostname"));
+                Console.WriteLine("RabbitMQSettings: " + Environment.GetEnvironmentVariable("RabbitMqUsername"));
+                Console.WriteLine("RabbitMQSettings: " + Environment.GetEnvironmentVariable("RabbitMqPassword"));
+                Console.WriteLine("RabbitMQSettings: " + Environment.GetEnvironmentVariable("RabbitMqPort"));
                 Console.WriteLine("JwtSettings: " + Environment.GetEnvironmentVariable("Issuer"));
                 Console.WriteLine("JwtSettings: " + Environment.GetEnvironmentVariable("Audience"));
                 Console.WriteLine("JwtSettings: " + Environment.GetEnvironmentVariable("JwtKey"));
                 Console.WriteLine("SecretKey: " + Environment.GetEnvironmentVariable("SecretKey"));
+                Console.WriteLine("Redis: " + Environment.GetEnvironmentVariable("Redis"));
                 cloudinarySettings.CloudName = Environment.GetEnvironmentVariable("CloudName");
                 cloudinarySettings.APIKey = Environment.GetEnvironmentVariable("APIKey");
                 cloudinarySettings.APISecret = Environment.GetEnvironmentVariable("APISecret");
@@ -185,6 +193,7 @@ namespace backend.Infrastructure.Configuration
                 rabbitMq.Hostname = Environment.GetEnvironmentVariable("RabbitMqHostname") ?? "";
                 rabbitMq.Username = Environment.GetEnvironmentVariable("RabbitMqUsername") ?? "";
                 rabbitMq.Password = Environment.GetEnvironmentVariable("RabbitMqPassword") ?? "";
+                rabbitMq.Port = int.Parse(Environment.GetEnvironmentVariable("RabbitMqPort") ?? "5672");
                 
                 services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }

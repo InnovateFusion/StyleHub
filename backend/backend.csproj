@@ -29,4 +29,17 @@
     <PackageReference Include="Twilio" Version="7.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="out\out\web.config" />
+    <_ContentIncludedByDefault Remove="out\web.config" />
+    <_ContentIncludedByDefault Remove="out\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="out\appsettings.json" />
+    <_ContentIncludedByDefault Remove="out\backend.deps.json" />
+    <_ContentIncludedByDefault Remove="out\backend.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="out\out\appsettings.Development.json" />
+    <_ContentIncludedByDefault Remove="out\out\appsettings.json" />
+    <_ContentIncludedByDefault Remove="out\out\backend.deps.json" />
+    <_ContentIncludedByDefault Remove="out\out\backend.runtimeconfig.json" />
+  </ItemGroup>
+
 </Project>
