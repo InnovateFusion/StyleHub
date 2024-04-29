@@ -5,14 +5,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { IoLocationOutline } from "react-icons/io5";
-import { RiTwitterXFill } from "react-icons/ri";
-import { FaFacebook } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa6";
-import { MdAlternateEmail } from "react-icons/md";
 import Image from "next/image";
 import image from "../../../public/hero/Image-2.png";
 import ProductCard from "../../../components/landing/ProductCard";
+import { AtSign, Facebook, MapPin, SendIcon, Twitter } from "lucide-react";
 
 const product = {
   id: 1,
@@ -85,10 +81,10 @@ export default function Page() {
               <p>Share Link</p>
               <div className="flex gap-x-5">
                 {[
-                  { social: "Twitter", icon: RiTwitterXFill },
-                  { social: "Facebook", icon: FaFacebook },
-                  { social: "Telegram", icon: FaTelegram },
-                  { social: "Mail", icon: MdAlternateEmail },
+                  { social: "Twitter", icon: Twitter },
+                  { social: "Facebook", icon: Facebook },
+                  { social: "Telegram", icon: SendIcon },
+                  { social: "Mail", icon: AtSign },
                 ].map(({ social, icon: IconComponent }) => (
                   <button
                     key={social}
@@ -100,7 +96,7 @@ export default function Page() {
               </div>
             </div>
             <div className="flex gap-x-1 justify-start items-center">
-              <IoLocationOutline />
+              <MapPin />
               <p>Addis Ababa, Ethiopia</p>
             </div>
           </div>
