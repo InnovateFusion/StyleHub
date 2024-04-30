@@ -1,5 +1,6 @@
 using backend.Domain.Entities.Common;
 using backend.Domain.Entities.Product;
+using backend.Domain.Entities.Shop;
 using backend.Domain.Entities.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,12 +19,20 @@ namespace backend.Persistence.Configuration
 		public virtual DbSet<Location> Locations { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-		
 		public virtual DbSet<ProductImage> ProductImages { get; set; }
 		public virtual DbSet<Role> Roles { get; set; }
 		public virtual DbSet<User> Users { get; set; }
 		public virtual DbSet<Image> Images { get; set; }
 		public virtual DbSet<Chat> Chats { get; set; }
+		
+		public virtual DbSet<Shop> Shops { get; set; }
+		public virtual DbSet<Branch> Branches { get; set; }
+		
+		public virtual DbSet<Review> Reviews { get; set; }
+		
+		public virtual DbSet<Employee> Employees { get; set; }
+		
+		public virtual DbSet<Subscriber> Subscribers { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -44,6 +53,11 @@ namespace backend.Persistence.Configuration
 			modelBuilder.Entity<Role>().HasKey(r => r.Id);
 			modelBuilder.Entity<Image>().HasKey(i => i.Id);
 			modelBuilder.Entity<Chat>().HasKey(i => i.Id);
+			modelBuilder.Entity<Shop>().HasKey(i => i.Id);
+			modelBuilder.Entity<Branch>().HasKey(i => i.Id);
+			modelBuilder.Entity<Review>().HasKey(i => i.Id);
+			modelBuilder.Entity<Employee>().HasKey(i => i.Id);
+			modelBuilder.Entity<Subscriber>().HasKey(i => i.Id);
 			base.OnModelCreating(modelBuilder);
 		}
 	}

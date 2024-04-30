@@ -42,4 +42,11 @@
     <_ContentIncludedByDefault Remove="out\out\backend.runtimeconfig.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Features\Shop Features\Shop\Handlers\Command\" />
+    <Folder Include="Application\Features\Shop Features\Shop\Handlers\Queries\" />
+    <Folder Include="Application\Features\Shop Features\Shop\Requests\Command\" />
+    <Folder Include="Application\Features\Shop Features\Shop\Requests\Queries\" />
+  </ItemGroup>
+
 </Project>

@@ -11,6 +11,8 @@ namespace backend.Application.DTO.Product.ProductDTO.DTO
         public required bool IsNegotiable { get; set; } = false;
         public bool IsPublished { get; set; } = false;
         public required string City { get; set; }
+        public required string? Address { get; set; }
+        public required string ShopId { get; set; }
         public required double Latitude { get; set; }
         public required double Longitude { get; set; }
         public string? BrandId { get; set; }

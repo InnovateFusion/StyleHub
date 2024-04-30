@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace backend.Application.Features.Common_Features.Chat.Handlers.Commands;
 
-public class CreateChatHandler(IUnitOfWork unitOfWork, IMapper mapper, IRabbitMQService rabbitMQService, ICacheService cacheService)
+public class CreateChatHandler(IUnitOfWork unitOfWork, IMapper mapper,  ICacheService cacheService)
     : IRequestHandler<CreateChatRequest, ChatResponseDTO>
 {
     public async Task<ChatResponseDTO> Handle(CreateChatRequest request, CancellationToken cancellationToken)
@@ -28,7 +28,7 @@ public class CreateChatHandler(IUnitOfWork unitOfWork, IMapper mapper, IRabbitMQ
             var senderData = await cacheService.Get<RealTimeChatUserDataDTO>($"{request.SenderId}-data");
             var receiverData = await cacheService.Get<RealTimeChatUserDataDTO>($"{request.Chat.ReceiverId}-data");  
             var message = SterilizeMessage(id, request.Chat.Message, request.Chat.Type, senderData, receiverData, dateTime);
-            rabbitMQService.PublishMessageAsync("chat", "chat", "chat", message);
+           // rabbitMQService.PublishMessageAsync("chat", "chat", "chat", message);
         }
 
         var sender = await unitOfWork.UserRepository.GetById(request.SenderId);

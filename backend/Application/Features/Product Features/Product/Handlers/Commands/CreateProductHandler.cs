@@ -19,7 +19,7 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
         )
         {
             var validator = new CreateProductValidation();
-            var validationResult = await validator.ValidateAsync(request.Product!);
+            var validationResult = await validator.ValidateAsync(request.Product!, cancellationToken);
             if (!validationResult.IsValid)
                 throw new BadRequestException(
                     validationResult.Errors.FirstOrDefault()?.ErrorMessage!
@@ -41,7 +41,10 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 throw new BadRequestException("Brand Id is Required");
             }
             
-           
+            var shop = await unitOfWork.ShopRepository.GetById(request.Product.ShopId);
+            if (shop == null)
+                    throw new NotFoundException("Shop Not Found"); 
+            product.Shop = shop;
 
             if (request?.Product.CategoryIds.Count > 0)
             {
@@ -52,12 +55,12 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 if (categories == null || categories.Count != request.Product.CategoryIds.Count)
                     throw new NotFoundException("category Not Found");
 
-                for (int i = 0; i < categories.Count; i++)
+                foreach (var t in categories)
                 {
                     var productCategory = new ProductCategory
                     {
                         ProductId = product.Id,
-                        Category = categories[i]
+                        Category = t
                     };
                     product.ProductCategories.Add(productCategory);
                 }
@@ -70,12 +73,12 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 if (images == null || images.Count != request.Product.ImageIds.Count)
                     throw new NotFoundException("image Not Found");
 
-                for (int i = 0; i < images.Count; i++)
+                foreach (var t in images)
                 {
                     var productImage = new ProductImage
                     {
                         ProductId = product.Id,
-                        Image = images[i]
+                        Image = t
                     };
                     product.ProductImages.Add(productImage);
                 }
@@ -88,12 +91,12 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 if (colors == null || colors.Count != request.Product.ColorIds.Count)
                     throw new NotFoundException("color Not Found");
 
-                for (int i = 0; i < colors.Count; i++)
+                foreach (var t in colors)
                 {
                     var productColor = new ProductColor
                     {
                         ProductId = product.Id,
-                        Color = colors[i]
+                        Color = t
                     };
                     product.ProductColors.Add(productColor);
                 }
@@ -106,9 +109,9 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 if (sizes == null || sizes.Count != request.Product.SizeIds.Count)
                     throw new NotFoundException("sizes Not Found");
 
-                for (int i = 0; i < sizes.Count; i++)
+                foreach (var t in sizes)
                 {
-                    var productSize = new ProductSize { ProductId = product.Id, Size = sizes[i] };
+                    var productSize = new ProductSize { ProductId = product.Id, Size = t };
                     product.ProductSizes.Add(productSize);
                 }
             }
@@ -122,12 +125,12 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 if (materialIds == null || materialIds.Count != request.Product.MaterialIds.Count)
                     throw new NotFoundException("materialIds Not Found");
 
-                for (int i = 0; i < materialIds.Count; i++)
+                foreach (var t in materialIds)
                 {
                     var productMaterial = new ProductMaterial
                     {
                         ProductId = product.Id,
-                        Material = materialIds[i]
+                        Material = t
                     };
                     product.ProductMaterials.Add(productMaterial);
                 }

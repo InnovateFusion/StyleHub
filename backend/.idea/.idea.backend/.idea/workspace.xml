@@ -8,15 +8,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix image upload bug">
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Branch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Employee.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Review.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Shop.cs" afterDir="false" />
+    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix bug">
+      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IBranchRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IEmployeeRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IReviewRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IShopRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/ISubscriberRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/CreateShopDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/ShopResponseDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Subscriber.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/BranchRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/EmployeeRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ReviewRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ShopRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/SubscriberRepository.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/env.list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/IUnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DTO/Product/ProductDTO/DTO/CreateProductDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Product/ProductDTO/DTO/CreateProductDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Commands/CreateProductHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Commands/CreateProductHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Employee.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Review.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Review.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Shop.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/RabbitMQConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/RabbitMQConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Configuration/DbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Configuration/DbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Configuration/PersistenceServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Configuration/PersistenceServiceRegistration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/UnitOfWork.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/backend.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +53,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/081f3546aaae4b0ab26160c25595ee001dc400/d2/e8c0ce85/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a36fb3c61e3f4789a347775892b62327e000/ea/cd43eb9a/BackgroundService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/38/e5b6206b/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Configuration/RabbitMQConfig.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -46,33 +69,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.backend: http.executor": "Run",
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Docker.docker-compose.yml.backend: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.rabbitmq: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "duresa.backend.chat",
-    "last_opened_file_path": "/home/kena/Desktop/StyleHub",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.backend: http.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.docker-compose.yml.backend: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.rabbitmq: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;duresa.backend.shop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kena/Desktop/StyleHub&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/home/kena/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache",
-      "/home/kena/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache",
-      "/home/kena/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/home/kena/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
+      &quot;/home/kena/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
+      &quot;/home/kena/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Docker.docker-compose.yml.backend: Compose Deployment">
     <configuration name="backend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/backend.csproj" />
@@ -182,7 +206,11 @@
       <workItem from="1714312658715" duration="15710000" />
       <workItem from="1714364782638" duration="11205000" />
       <workItem from="1714376627619" duration="350000" />
-      <workItem from="1714377334359" duration="19285000" />
+      <workItem from="1714377334359" duration="29326000" />
+      <workItem from="1714445363448" duration="12209000" />
+      <workItem from="1714468289506" duration="1586000" />
+      <workItem from="1714471582007" duration="597000" />
+      <workItem from="1714472212148" duration="81000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />
@@ -224,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714305013529</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=":bug: fix bug">
+      <option name="closed" value="true" />
+      <created>1714407578286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1714407578286</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +314,7 @@
     <MESSAGE value=":art: refactor code" />
     <MESSAGE value=":bug: fix chat delay" />
     <MESSAGE value=":bug: fix image upload bug" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix image upload bug" />
+    <MESSAGE value=":bug: fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix bug" />
   </component>
 </project>

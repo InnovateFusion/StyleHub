@@ -1,11 +1,9 @@
 using backend.Application.Contracts.Persistence;
 using backend.Application.Contracts.Persistence.Repositories.Common;
 using backend.Application.Contracts.Persistence.Repositories.Product;
+using backend.Application.Contracts.Persistence.Repositories.Shop;
 using backend.Application.Contracts.Persistence.Repositories.User;
 using backend.Persistence.Configuration;
-using backend.Persistence.Repositories.Common;
-using backend.Persistence.Repositories.Product;
-using backend.Persistence.Repositories.User;
 
 namespace backend.Persistence.Repositories
 {
@@ -26,172 +24,57 @@ namespace backend.Persistence.Repositories
         IUserRepository userRepository,
         IChatRepository chatRepository,
         IImageRepository imageRepository,
-        IProductImageRepository productImageRepository
+        IProductImageRepository productImageRepository,
+        IReviewRepository reviewRepository,
+        IShopRepository shopRepository,
+        ISubscriberRepository subscriberRepository,
+        IEmployeeRepository employeeRepository,
+        IBranchRepository branchRepository
         )
     
         : IUnitOfWork
     {
-        public IProductRepository ProductRepository
-        {
-            get
-            {
-                if (productRepository == null)
-                    productRepository = new ProductRepository(context);
-                return productRepository;
-            }
-        }
+        public IProductRepository ProductRepository => productRepository;
 
-        public IColorRepository ColorRepository
-        {
-            get
-            {
-                if (colorRepository == null)
-                    colorRepository = new ColorRepository(context);
-                return colorRepository;
-            }
-        }
+        public IColorRepository ColorRepository => colorRepository;
 
-        public ISizeRepository SizeRepository
-        {
-            get
-            {
-                if (sizeRepository == null)
-                    sizeRepository = new SizeRepository(context);
-                return sizeRepository;
-            }
-        }
+        public ISizeRepository SizeRepository => sizeRepository;
 
-        public IBrandRepository BrandRepository
-        {
-            get
-            {
-                if (brandRepository == null)
-                    brandRepository = new BrandRepository(context);
-                return brandRepository;
-            }
-        }
+        public IBrandRepository BrandRepository => brandRepository;
 
-        public IMaterialRepository MaterialRepository
-        {
-            get
-            {
-                if (materialRepository == null)
-                    materialRepository = new MaterialRepository(context);
-                return materialRepository;
-            }
-        }
+        public IMaterialRepository MaterialRepository => materialRepository;
 
-        public IProductColorRepository ProductColorRepository
-        {
-            get
-            {
-                if (productColorRepository == null)
-                    productColorRepository = new ProductColorRepository(context);
-                return productColorRepository;
-            }
-        }
+        public IProductColorRepository ProductColorRepository => productColorRepository;
 
-        public IProductSizeRepository ProductSizeRepository
-        {
-            get
-            {
-                if (productSizeRepository == null)
-                    productSizeRepository = new ProductSizeRepository(context);
-                return productSizeRepository;
-            }
-        }
+        public IProductSizeRepository ProductSizeRepository => productSizeRepository;
 
-        public IProductMaterialRepository ProductMaterialRepository
-        {
-            get
-            {
-                if (productMaterialRepository == null)
-                    productMaterialRepository = new ProductMaterialRepository(context);
-                return productMaterialRepository;
-            }
-        }
+        public IProductMaterialRepository ProductMaterialRepository => productMaterialRepository;
 
-        public ILocationRepository LocationRepository
-        {
-            get
-            {
-                if (locationRepository == null)
-                    locationRepository = new LocationRepository(context);
-                return locationRepository;
-            }
-        }
+        public ILocationRepository LocationRepository => locationRepository;
 
-        public ICategoryRepository CategoryRepository
-        {
-            get
-            {
-                if (categoryRepository == null)
-                    categoryRepository = new CategoryRepository(context);
-                return categoryRepository;
-            }
-        }
+        public ICategoryRepository CategoryRepository => categoryRepository;
 
-        public IProductCategoryRepository ProductCategoryRepository
-        {
-            get
-            {
-                if (productCategoryRepository == null)
-                    productCategoryRepository = new ProductCategoryRepository(context);
-                return productCategoryRepository;
-            }
-        }
+        public IProductCategoryRepository ProductCategoryRepository => productCategoryRepository;
 
-        public IProductImageRepository ProductImageRepository
-        {
-            get
-            {
-                if (productImageRepository == null)
-                    productImageRepository = new ProductImageRepository(context);
-                return productImageRepository;
-            }
-        }
+        public IProductImageRepository ProductImageRepository => productImageRepository;
 
-        public IRoleRepository RoleRepository
-        {
-            get
-            {
-                if (roleRepository == null)
-                    roleRepository = new RoleRepository(context);
-                return roleRepository;
-            }
-        }
+        public IRoleRepository RoleRepository => roleRepository;
 
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository(context);
-                return userRepository;
-            }
-        }
+        public IUserRepository UserRepository => userRepository;
 
-        public IImageRepository ImageRepository
-        {
-            get
-            {
-                if (imageRepository == null)
-                    imageRepository = new ImageRepository(context);
-                return imageRepository;
-            }
-        }
+        public IImageRepository ImageRepository => imageRepository;
+
+        public IChatRepository ChatRepository => chatRepository;
+
+        public IReviewRepository ReviewRepository => reviewRepository;
+
+        public IShopRepository ShopRepository => shopRepository;
+
+        public ISubscriberRepository SubscriberRepository => subscriberRepository;
+
+        public IEmployeeRepository EmployeeRepository => employeeRepository;
         
-        public IChatRepository ChatRepository
-        {
-            get
-            {
-                if (chatRepository == null)
-                    chatRepository = new ChatRepository(context);
-                return chatRepository;
-            }
-        }
-        
-       
+        public IBranchRepository BranchRepository => branchRepository;
 
         public void Dispose()
         {

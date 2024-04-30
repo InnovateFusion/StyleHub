@@ -37,6 +37,9 @@ namespace backend.Domain.Entities.Product
 
         [Required]
         public required double Longitude { get; set; }
+        
+        [Required]
+        public virtual required Shop.Shop Shop { get; set; }
 
         [Required]
         public virtual required Brand Brand { get; set; }

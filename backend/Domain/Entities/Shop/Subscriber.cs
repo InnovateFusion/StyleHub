@@ -1,12 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using backend.Domain.Common;
 
 namespace backend.Domain.Entities.Shop;
 
-public class Review : BaseEntity
+public class Subscriber
 {
-    public required string Comment { get; set; }
-    public required int Rating { get; set; }
+    public string Id { get; set; } = Guid.NewGuid().ToString();
     public virtual required Shop Shop { get; set; }
     [ForeignKey("User")]
     public required string UserId { get; set; }

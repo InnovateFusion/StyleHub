@@ -1,10 +1,12 @@
 using backend.Application.Contracts.Persistence;
 using backend.Application.Contracts.Persistence.Repositories.Common;
 using backend.Application.Contracts.Persistence.Repositories.Product;
+using backend.Application.Contracts.Persistence.Repositories.Shop;
 using backend.Application.Contracts.Persistence.Repositories.User;
 using backend.Persistence.Repositories;
 using backend.Persistence.Repositories.Common;
 using backend.Persistence.Repositories.Product;
+using backend.Persistence.Repositories.Shop;
 using backend.Persistence.Repositories.User;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,6 +55,11 @@ namespace backend.Persistence.Configuration
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IProductImageRepository, ProductImageRepository>();
             services.AddScoped<IChatRepository, ChatRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<ISubscriberRepository, SubscriberRepository>();
+            services.AddScoped<IBranchRepository, BranchRepository>();
 
             return services;
         }
