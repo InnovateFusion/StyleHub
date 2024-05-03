@@ -92,7 +92,7 @@ namespace backend.Infrastructure.Configuration
                 Console.WriteLine(
                     "Redis: " + configuration.GetConnectionString("Redis"));
                 
-                services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+                //services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }
             else
             {
@@ -195,23 +195,23 @@ namespace backend.Infrastructure.Configuration
                 rabbitMq.Password = Environment.GetEnvironmentVariable("RabbitMqPassword") ?? "";
                 rabbitMq.Port = int.Parse(Environment.GetEnvironmentVariable("RabbitMqPort") ?? "5672");
                 
-                services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
+               // services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConnectionString));
             }
        
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddSingleton(CloudinaryConfiguration.Configure(cloudinarySettings));
-            services.AddSingleton(RabbitMqConfig.Configure(rabbitMq));
-            services.AddSingleton<RabbitMQ.Client.IModel>(provider => RabbitMqConfig.Configure(rabbitMq));
+            //services.AddSingleton(RabbitMqConfig.Configure(rabbitMq));
+            //services.AddSingleton<RabbitMQ.Client.IModel>(provider => RabbitMqConfig.Configure(rabbitMq));
             services.AddHttpClient<PhoneNumberOTPManager>();
             services.AddHttpContextAccessor();
             services.AddSingleton<PhoneNumberOTPManager>();
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<ICurrentLoggedInService, CurrentLoggedInService>();
-            services.AddScoped<IRabbitMQService, RabbitMqService>();
-            services.AddHostedService<RabbitMqBackgroundService>();
-            services.AddSingleton<ICacheService, CacheService>();
+            //services.AddScoped<IRabbitMQService, RabbitMqService>();
+            //services.AddHostedService<RabbitMqBackgroundService>();
+            //services.AddSingleton<ICacheService, CacheService>();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("admin"));
