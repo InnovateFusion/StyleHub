@@ -9,10 +9,14 @@ using backend.Application.DTO.Product.ColorDTO.DTO;
 using backend.Application.DTO.Product.MaterialDTO.DTO;
 using backend.Application.DTO.Product.ProductDTO.DTO;
 using backend.Application.DTO.Product.SizeDTO.DTO;
+using backend.Application.DTO.Shop.BranchDTO.DTO;
+using backend.Application.DTO.Shop.EmployeeDTO.DTO;
+using backend.Application.DTO.Shop.ShopDTO.DTO;
 using backend.Application.DTO.User.AuthenticationDTO.DTO;
 using backend.Application.DTO.User.UserDTO.DTO;
 using backend.Domain.Entities.Common;
 using backend.Domain.Entities.Product;
+using backend.Domain.Entities.Shop;
 using backend.Domain.Entities.User;
 
 namespace backend.Application.Profiles
@@ -32,24 +36,6 @@ namespace backend.Application.Profiles
 							Id = src.Brand.Id,
 							Name = src.Brand.Name,
 							Logo = src.Brand.Logo
-						})
-				)
-				.ForMember(
-					dest => dest.User,
-					opt =>
-						opt.MapFrom(src => new UserSharedResponseDTO
-						{
-							Id = src.User.Id,
-							FirstName = src.User.FirstName,
-							LastName = src.User.LastName,
-							PhoneNumber = src.User.PhoneNumber,
-							Email = src.User.Email,
-							Latitude = src.User.Longitude,
-							Longitude = src.User.Longitude,
-							ProfilePicture = src.User.ProfilePicture,
-							Country = src.User.Country,
-							City = src.User.City,
-							Address = src.User.Address
 						})
 				)
 				.ForMember(
@@ -143,6 +129,15 @@ namespace backend.Application.Profiles
 			CreateMap<ImageResponseDTO, Image>().ReverseMap();
 			CreateMap<UserSharedResponseDTO, User>().ReverseMap();
 			CreateMap<User, UserChatResponseDTO>().ReverseMap();
+			CreateMap<CreateShopDTO, Shop>().ReverseMap();
+			CreateMap<ShopResponseCardDTO, Shop>().ReverseMap();
+			CreateMap<ShopResponseDTO, Shop>().ReverseMap();
+			CreateMap<BranchResponseDTO, Branch>().ReverseMap();
+			CreateMap<CreateBranchDTO, Branch>().ReverseMap();
+			CreateMap<UpdateBranchDTO, Branch>().ReverseMap();
+			CreateMap<UpdateEmployeeDTO, Employee>().ReverseMap();
+			CreateMap<EmployeeResponseDTO, Employee>().ReverseMap();
+			CreateMap<CreateEmployeeDTO, Employee>().ReverseMap();
 			CreateMap<UserResponseDTO, User>().ReverseMap()
 				.ForMember(
 					dest => dest.Role,

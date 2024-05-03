@@ -201,16 +201,16 @@ namespace backend.Infrastructure.Configuration
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddSingleton(CloudinaryConfiguration.Configure(cloudinarySettings));
-            //services.AddSingleton(RabbitMqConfig.Configure(rabbitMq));
-            //services.AddSingleton<RabbitMQ.Client.IModel>(provider => RabbitMqConfig.Configure(rabbitMq));
+            services.AddSingleton(RabbitMqConfig.Configure(rabbitMq));
+            services.AddSingleton<RabbitMQ.Client.IModel>(provider => RabbitMqConfig.Configure(rabbitMq));
             services.AddHttpClient<PhoneNumberOTPManager>();
             services.AddHttpContextAccessor();
             services.AddSingleton<PhoneNumberOTPManager>();
             services.AddScoped<IOtpService, OtpService>();
             services.AddScoped<IEmailSender, EmailSender>();
             services.AddScoped<ICurrentLoggedInService, CurrentLoggedInService>();
-            //services.AddScoped<IRabbitMQService, RabbitMqService>();
-            //services.AddHostedService<RabbitMqBackgroundService>();
+            services.AddScoped<IRabbitMQService, RabbitMqService>();
+            services.AddHostedService<RabbitMqBackgroundService>();
             services.AddSingleton<ICacheService, CacheService>();
             services.AddAuthorization(options =>
             {

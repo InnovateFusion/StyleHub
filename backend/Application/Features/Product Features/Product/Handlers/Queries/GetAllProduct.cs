@@ -17,6 +17,7 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Queries
 			var products = await unitOfWork.ProductRepository.GetAll(
 				search: request.Search,
 				brandId: request.BrandId,
+				shopId: request.ShopId,
 				colorIds: request.ColorIds,
 				materialIds: request.MaterialIds,
 				sizeIds: request.SizeIds,

@@ -2,6 +2,7 @@ using System.Net;
 using backend.Application.Exceptions;
 using backend.Application.Response;
 using Newtonsoft.Json;
+using ArgumentException = backend.Application.Exceptions.ArgumentException;
 
 namespace backend.WebApi.Middlewares
 {
@@ -46,6 +47,12 @@ namespace backend.WebApi.Middlewares
 						new BaseResponse<string> { Message = exception.Message }
 					);
 					break;
+				case ArgumentException :
+					statusCode = HttpStatusCode.BadRequest;
+					result = JsonConvert.SerializeObject(
+						new BaseResponse<string> { Message = exception.Message }
+					);
+					break;
 				case UnauthorizedAccessException unauthorizedException:
 					statusCode = HttpStatusCode.Unauthorized;
 					result = JsonConvert.SerializeObject(
@@ -54,6 +61,9 @@ namespace backend.WebApi.Middlewares
 					break;
 				default:
 					statusCode = HttpStatusCode.InternalServerError;
+					Console.WriteLine("---------------------------");
+					Console.WriteLine(exception.Message);
+					Console.WriteLine("---------------------------");
 					result = JsonConvert.SerializeObject(
 						new BaseResponse<string>
 						{

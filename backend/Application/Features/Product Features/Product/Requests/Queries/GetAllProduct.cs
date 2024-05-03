@@ -8,6 +8,7 @@ namespace backend.Application.Features.Product_Features.Product.Requests.Queries
 		public GetAllProduct(
 			string search = "",
 			string? brandId = null,
+			string? shopId = null,
 			IEnumerable<string>? colorIds = null,
 			IEnumerable<string>? materialIds = null,
 			IEnumerable<string>? sizeIds = null,
@@ -30,6 +31,7 @@ namespace backend.Application.Features.Product_Features.Product.Requests.Queries
 		{
 			Search = search;
 			BrandId = brandId;
+			ShopId = shopId;
 			ColorIds = colorIds;
 			MaterialIds = materialIds;
 			SizeIds = sizeIds;
@@ -51,6 +53,7 @@ namespace backend.Application.Features.Product_Features.Product.Requests.Queries
 
 		public string Search { get; set; }
 		public string? BrandId { get; set; }
+		public string? ShopId { get; set; }
 		public IEnumerable<string>? ColorIds { get; set; }
 		public IEnumerable<string>? MaterialIds { get; set; }
 		public IEnumerable<string>? SizeIds { get; set; }

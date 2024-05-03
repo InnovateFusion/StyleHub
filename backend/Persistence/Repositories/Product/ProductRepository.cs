@@ -13,7 +13,7 @@ namespace backend.Persistence.Repositories.Product
         {
             var product = await context
                 .Products.Include(p => p.Brand)
-                .Include(p => p.User)
+                .Include(p => p.Shop)
                 .Include(p => p.ProductImages)
                 .ThenInclude(pi => pi.Image)
                 .Include(p => p.ProductColors)
@@ -34,7 +34,7 @@ namespace backend.Persistence.Repositories.Product
         public async Task<IReadOnlyList<Domain.Entities.Product.Product>> GetAll(
             string search = "",
             string? brandId = null,
-            string? userId = null,
+            string? shopId = null,
             IEnumerable<string>? colorIds = null,
             IEnumerable<string>? materialIds = null,
             IEnumerable<string>? sizeIds = null,
@@ -58,7 +58,7 @@ namespace backend.Persistence.Repositories.Product
             IQueryable<Domain.Entities.Product.Product> query = context
                 .Products
                 .Include(p => p.Brand)
-                .Include(p => p.User)
+                .Include(p => p.Shop)
                 .Include(p => p.ProductColors)
                 .ThenInclude(pc => pc.Color)
                 .Include(p => p.ProductMaterials)
@@ -116,9 +116,9 @@ namespace backend.Persistence.Repositories.Product
                 query = query.Where(p => p.Brand.Id == brandId);
             }
 
-            if (!string.IsNullOrWhiteSpace(userId))
+            if (!string.IsNullOrWhiteSpace(shopId))
             {
-                query = query.Where(p => p.User.Id == userId);
+                query = query.Where(p => p.Shop.Id == shopId);
             }
 
             if (colorIds?.Any() == true)
@@ -180,73 +180,31 @@ namespace backend.Persistence.Repositories.Product
                 query = query.Where(p => p.Condition == condition);
             }
 
-            if (!string.IsNullOrWhiteSpace(sortBy))
+            if (!string.IsNullOrEmpty(sortBy))
             {
-                switch (sortBy.ToLower())
+                var entityType = typeof(Domain.Entities.Product.Product);
+                var property = entityType.GetProperty(sortBy);
+                if (property == null || (sortOrder != "asc" && sortOrder != "desc"))
                 {
-                    case "title":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.Title);
-                        else
-                            query = query.OrderBy(p => p.Title);
-                        break;
-                    case "date":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.CreatedAt);
-                        else
-                            query = query.OrderBy(p => p.CreatedAt);
-                        break;
-                    case "price":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.Price);
-                        else
-                            query = query.OrderBy(p => p.Price);
-                        break;
-                    case "quantity":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.Quantity);
-                        else
-                            query = query.OrderBy(p => p.Quantity);
-                        break;
-                    case "condition":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.Condition);
-                        else
-                            query = query.OrderBy(p => p.Condition);
-                        break;
-                    case "target":
-                        if (sortOrder?.ToLower() == "desc")
-                            query = query.OrderByDescending(p => p.Target);
-                        else
-                            query = query.OrderBy(p => p.Target);
-                        break;
-                    default:
-                        query = query.OrderByDescending(p => p.CreatedAt);
-                        break;
+                    throw new ArgumentException($"Property {sortBy} not found");
                 }
+                query = sortOrder switch
+                {
+                    "asc" => query.OrderBy(p => EF.Property<object>(p, sortBy)),
+                    "desc" => query.OrderByDescending(p => EF.Property<object>(p, sortBy)),
+                    _ => query.OrderByDescending(p => p.CreatedAt)
+                };
             }
-            else
-            {
-                query = query.OrderByDescending(p => p.CreatedAt);
-            }
-
             query = query.Skip(skip).Take(limit);
 
             return await query.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<Domain.Entities.Product.Product>> GetByUserId(
-            string userId,
-            int skip = 0,
-            int limit = 10
-        )
+        public async Task<IReadOnlyList<Domain.Entities.Product.Product>> GetByShopId(string shopId, int skip = 0, int limit = 15)
         {
-            Console.WriteLine($"Fetching products by user {userId}");
-            Console.WriteLine($"Skip: {skip}, Limit: {limit}");
             var products = await context
                 .Products.Include(p => p.Brand)
-          
-                .Include(p => p.User)
+                .Include(p => p.Shop)
                 .Include(p => p.ProductColors)
                 .ThenInclude(pc => pc.Color)
                 .Include(p => p.ProductMaterials)
@@ -259,12 +217,11 @@ namespace backend.Persistence.Repositories.Product
                 .ThenInclude(pi => pi.Image)
                 .AsSplitQuery()
                 .AsNoTracking()
-                .Where(p => p.User.Id == userId)
+                .Where(p => p.Shop.Id == shopId)
                 .OrderByDescending(p => p.CreatedAt)
                 .Skip(skip)
                 .Take(limit)
                 .ToListAsync();
-
             return products;
         }
     }

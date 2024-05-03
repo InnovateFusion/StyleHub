@@ -29,11 +29,9 @@ public class CreateShopDTO
     public bool IsVerified { get; set; } = false;
 
     public string? Email { get; set; }
-    public string? SocialMedias { get; set; }
+    public List<SocialMediaDTO> SocialMedias { get; set; }
     public string? Website { get; set; }
     public DateTime? EstablishedAt { get; set; }
     public string? ProfileImage { get; set; }
     public string? CoverImage { get; set; }
-    public string? LicenseNumber { get; set; }
-    public string? LicenseImage { get; set; }
 }

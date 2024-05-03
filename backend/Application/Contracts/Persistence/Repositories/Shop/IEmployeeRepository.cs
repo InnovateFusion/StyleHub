@@ -15,4 +15,6 @@ public interface IEmployeeRepository : IGenericRepository<Employee>
     );
     
     Task<Employee> GetById(string id);
+    
+    Task<Employee> GetByUserIdAndShopId(string userId, string shopId);
 }

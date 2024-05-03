@@ -8,36 +8,82 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment=":bug: fix bug">
-      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IBranchRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IEmployeeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IReviewRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IShopRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/ISubscriberRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/CreateShopDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/ShopResponseDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Subscriber.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/BranchRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/EmployeeRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ReviewRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ShopRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/SubscriberRepository.cs" afterDir="false" />
+    <list default="true" id="8a213b2a-3abd-4802-9f13-2ee67c773934" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/BranchDTO/DTO/BranchResponseDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/BranchDTO/DTO/CreateBranchDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/BranchDTO/DTO/UpdateBranchDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/EmployeeDTO/DTO/CreateEmployeeDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/EmployeeDTO/DTO/EmployeeResponseDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/EmployeeDTO/DTO/UpdateEmployeeDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/EmployeeDTO/Validations/CreateEmployeeDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/EmployeeDTO/Validations/UpdateEmployeeDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/ShopResponseCardDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/SocialMediaDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/UpdateShopDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/Validations/CreateShopValidation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/Validations/UpdateShopValidation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Exceptions/ArgumentException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Handlers/Command/CreateBranchHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Handlers/Command/DeleteBranchHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Handlers/Command/UpdateBranchHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Handlers/Queries/GetAllBranchHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Handlers/Queries/GetBranchHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Requests/Command/CreateBranchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Requests/Command/DeleteBranchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Requests/Command/UpdateBranchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Requests/Queries/GetAllBranchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Branch/Requests/Queries/GetBranchRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Handlers/Command/CreateEmployeeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Handlers/Command/DeleteEmployeeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Handlers/Command/UpdateEmployeeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Handlers/Queries/GetAllEmployeeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Handlers/Queries/GetEmployeeHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Requests/Command/CreateEmployeeRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Requests/Command/DeleteEmployeeRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Requests/Command/UpdateEmployeeRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Requests/Queries/GetAllEmployeeRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Employee/Requests/Queries/GetEmployeeRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Handlers/Command/CreateShopHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Handlers/Command/DeleteShopHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Handlers/Command/UpdateShopHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Handlers/Queries/GetAllShopHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Handlers/Queries/GetShopHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Command/CreateShopRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Command/DeleteShopRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Command/UpdateShopRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Queries/GetAllShopRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Queries/GetShopRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/Shop/BranchController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/Shop/EmployeeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Controllers/Shop/ShopController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend.sln.DotSettings.user" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/env.list" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/IUnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/IUnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/DTO/Product/ProductDTO/DTO/CreateProductDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Product/ProductDTO/DTO/CreateProductDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Common Features/Chat/Handlers/Commands/CreateChatHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Product/IProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Product/IProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IBranchRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IBranchRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IEmployeeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IEmployeeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IShopRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Contracts/Persistence/Repositories/Shop/IShopRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/CreateShopDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/CreateShopDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/ShopResponseDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/DTO/Shop/ShopDTO/DTO/ShopResponseDTO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Commands/CreateProductHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Commands/CreateProductHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetAllProduct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetAllProduct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetAllProductByUserIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetAllProductByShopIdHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetProductByIdHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Handlers/Queries/GetProductByIdHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Requests/Queries/GetAllProduct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Requests/Queries/GetAllProduct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Features/Product Features/Product/Requests/Queries/GetAllProductsByUserId.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Features/Product Features/Product/Requests/Queries/GetAllProductsByShopId.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Profiles/MappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Profiles/MappingProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Entities/Product/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Product/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Branch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Branch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Employee.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Employee.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Review.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Review.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/Entities/Shop/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Entities/Shop/Shop.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Configuration/DbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Configuration/DbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Configuration/PersistenceServiceRegistration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Configuration/PersistenceServiceRegistration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/UnitOfWork.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/UnitOfWork.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Product/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Product/ProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Shop/BranchRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/BranchRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Shop/EmployeeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/EmployeeRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Shop/ReviewRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ReviewRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Persistence/Repositories/Shop/ShopRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Persistence/Repositories/Shop/ShopRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/Product/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/Product/ProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Middlewares/ExceptionMiddleware.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Middlewares/ExceptionMiddleware.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/backend.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,11 +99,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/081f3546aaae4b0ab26160c25595ee001dc400/d2/e8c0ce85/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a36fb3c61e3f4789a347775892b62327e000/ea/cd43eb9a/BackgroundService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/38/e5b6206b/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Configuration/InfrastructureServiceRegistration.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///home/kena/Desktop/StyleHub/backend/Infrastructure/Configuration/RabbitMQConfig.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f0e1115fb2e8433ea5e966ff7dea2563b2c600/83/5e2e9364/String.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -79,17 +127,21 @@
     &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;SQL Inserts&quot;,
     &quot;git-widget-placeholder&quot;: &quot;duresa.backend.shop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/kena/Desktop/StyleHub&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kena/Desktop&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
     &quot;rider.external.source.directories&quot;: [
       &quot;/home/kena/.config/JetBrains/Rider2024.1/resharper-host/DecompilerCache&quot;,
       &quot;/home/kena/.config/JetBrains/Rider2024.1/resharper-host/SourcesCache&quot;,
@@ -211,6 +263,13 @@
       <workItem from="1714468289506" duration="1586000" />
       <workItem from="1714471582007" duration="597000" />
       <workItem from="1714472212148" duration="81000" />
+      <workItem from="1714472442471" duration="1930000" />
+      <workItem from="1714474416737" duration="112000" />
+      <workItem from="1714487337902" duration="11584000" />
+      <workItem from="1714622470318" duration="10412000" />
+      <workItem from="1714643649107" duration="24514000" />
+      <workItem from="1714671959511" duration="21000" />
+      <workItem from="1714694754512" duration="14413000" />
     </task>
     <task id="LOCAL-00001" summary=":art: Refactor code">
       <option name="closed" value="true" />
@@ -260,7 +319,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714407578286</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary=":sparkles: Add shop DTO">
+      <option name="closed" value="true" />
+      <created>1714472785159</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1714472785159</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +382,30 @@
     <MESSAGE value=":bug: fix chat delay" />
     <MESSAGE value=":bug: fix image upload bug" />
     <MESSAGE value=":bug: fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value=":bug: fix bug" />
+    <MESSAGE value=":sparkles: Add shop DTO" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: Add shop DTO" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Command/CreateShopRequest.cs</url>
+          <line>4</line>
+          <properties documentPath="$PROJECT_DIR$/Application/Features/Shop Features/Shop/Requests/Command/CreateShopRequest.cs" containingFunctionPresentation="Property 'Shop'">
+            <startOffsets>
+              <option value="151" />
+            </startOffsets>
+            <endOffsets>
+              <option value="155" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

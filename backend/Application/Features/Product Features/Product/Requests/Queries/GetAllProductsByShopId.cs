@@ -3,9 +3,9 @@ using MediatR;
 
 namespace backend.Application.Features.Product_Features.Product.Requests.Queries
 {
-    public class GetAllProductUserId : IRequest<List<ProductResponseDTO>>
+    public class GetAllProductShopId : IRequest<List<ProductResponseDTO>>
     {
-        public required string UserId { get; set; }
+        public required string ShopId { get; set; }
         public int Skip { get; set; }
         public int Limit { get; set; }
     }

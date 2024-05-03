@@ -6,16 +6,16 @@ using MediatR;
 
 namespace backend.Application.Features.Product_Features.Product.Handlers.Queries
 {
-    public class GetAllProductUserIdHandler(IUnitOfWork unitOfWork, IMapper mapper)
-        : IRequestHandler<GetAllProductUserId, List<ProductResponseDTO>>
+    public class GetAllProductShopIdHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        : IRequestHandler<GetAllProductShopId, List<ProductResponseDTO>>
     {
         public async Task<List<ProductResponseDTO>> Handle(
-            GetAllProductUserId request,
+            GetAllProductShopId request,
             CancellationToken cancellationToken
         )
         {
-            var products = await unitOfWork.ProductRepository.GetByUserId(
-                userId: request.UserId,
+            var products = await unitOfWork.ProductRepository.GetByShopId(
+                shopId: request.ShopId,
                 skip: request.Skip,
                 limit: request.Limit
             );

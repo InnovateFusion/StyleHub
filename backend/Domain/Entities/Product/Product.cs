@@ -22,10 +22,6 @@ namespace backend.Domain.Entities.Product
 
         [Required]
         public required string Condition { get; set; }
-
-        [Required]
-        public virtual required User.User User { get; set; }
-
         [Required]
         public bool IsPublished { get; set; } = false;
 

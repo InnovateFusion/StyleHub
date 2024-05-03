@@ -1,4 +1,5 @@
 using backend.Application.Contracts.Persistence.Repositories.Common;
+using Task = Twilio.TwiML.Voice.Task;
 
 namespace backend.Application.Contracts.Persistence.Repositories.Product
 {
@@ -7,7 +8,7 @@ namespace backend.Application.Contracts.Persistence.Repositories.Product
 		Task<IReadOnlyList<Domain.Entities.Product.Product>> GetAll(
 			string search = "",
 			string? brandId = null,
-			string? userId = null,
+			string? shopId = null,
 			IEnumerable<string>? colorIds = null,
 			IEnumerable<string>? materialIds = null,
 			IEnumerable<string>? sizeIds = null,
@@ -29,9 +30,9 @@ namespace backend.Application.Contracts.Persistence.Repositories.Product
 		);
 
 		Task<Domain.Entities.Product.Product> GetById(string id);
-
-		Task<IReadOnlyList<Domain.Entities.Product.Product>> GetByUserId(
-			string userId,
+		
+		Task<IReadOnlyList<Domain.Entities.Product.Product>> GetByShopId(
+			string shopId,
 			int skip = 0,
 			int limit = 10
 		);

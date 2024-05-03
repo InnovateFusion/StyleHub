@@ -16,6 +16,7 @@ namespace backend.WebApi.Controllers.Product
         public async Task<ActionResult<List<ProductResponseDTO>>> FetchAllProducts(
             [FromQuery] string search = "",
             [FromQuery] string? brandId = null,
+            [FromQuery] string? shopId = null,
             [FromQuery] IEnumerable<string>? colorIds = null,
             [FromQuery] IEnumerable<string>? materialIds = null,
             [FromQuery] IEnumerable<string>? sizeIds = null,
@@ -41,6 +42,7 @@ namespace backend.WebApi.Controllers.Product
                     Search = search,
                     BrandId = brandId,
                     ColorIds = colorIds,
+                    ShopId = shopId,
                     MaterialIds = materialIds,
                     SizeIds = sizeIds,
                     IsNegotiable = isNegotiable,
@@ -62,6 +64,25 @@ namespace backend.WebApi.Controllers.Product
 
             return Ok(result);
         }
+        
+        [HttpGet("shop/{shopId}")]
+        public async Task<ActionResult<List<ProductResponseDTO>>> FetchProductByShopId(
+            string shopId,
+            [FromQuery] int Skip = 0,
+            [FromQuery] int Limit = 15
+        )
+        {
+            var result = await mediator.Send(
+                new GetAllProductShopId
+                {
+                    ShopId = shopId,
+                    Limit = Limit,
+                    Skip = Skip
+                }
+            );
+            return Ok(result);
+        }
+        
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductResponseDTO>> fetchProductById(string id)
@@ -69,25 +90,7 @@ namespace backend.WebApi.Controllers.Product
             var result = await mediator.Send(new GetProductById { Id = id });
             return Ok(result);
         }
-
-        [HttpGet("Added-By-User")]
-        [Authorize]
-        public async Task<ActionResult<ProductResponseDTO>> fetchProductByUser(
-            [FromQuery] int Skip = 0,
-            [FromQuery] int Limit = 10
-        )
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            var result = await mediator.Send(
-                new GetAllProductUserId
-                {
-                    UserId = userId,
-                    Limit = Limit,
-                    Skip = Skip
-                }
-            );
-            return Ok(result);
-        }
+        
 
         [HttpPost]
         [Authorize]

@@ -7,6 +7,7 @@ public interface IBranchRepository: IGenericRepository<Branch>
 {
     Task<IReadOnlyList<Branch>> GetAll(
         string? shopId = null,
+        string? search = null,
         string? sortBy = null,
         string? sortOrder = null,
         int skip = 0,

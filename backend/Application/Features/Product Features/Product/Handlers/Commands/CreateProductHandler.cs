@@ -24,11 +24,7 @@ namespace backend.Application.Features.Product_Features.Product.Handlers.Command
                 throw new BadRequestException(
                     validationResult.Errors.FirstOrDefault()?.ErrorMessage!
                 );
-
             var product = mapper.Map<Domain.Entities.Product.Product>(request?.Product);
-            var user = await unitOfWork.UserRepository.GetById(request?.UserId ?? "");
-            product.User = user;
-
             if (request?.Product.BrandId != null)
             {
                 var brand = await unitOfWork.BrandRepository.GetById(request.Product.BrandId);
