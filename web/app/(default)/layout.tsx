@@ -1,5 +1,6 @@
 import Footer from "@/components/common/Footer";
 import Navbar from "@/components/common/Navbar";
+import Providers from "@/lib/query-provider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,10 +14,10 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
+    <Providers>
       <Navbar />
       {children}
       <Footer />
-    </div>
+    </Providers>
   );
 }

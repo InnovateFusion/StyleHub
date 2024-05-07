@@ -29,23 +29,30 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Button } from "@/components/ui/button";
 import { Toggle } from "@radix-ui/react-toggle";
 import { LayoutGrid, List, MapPin, Slash } from "lucide-react";
-import {
-  brands,
-  colors,
-  materials,
-  sizes,
-  type,
-  availability,
-  conditions,
-} from "./brands";
+import { availability, conditions } from "./brands";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { CategoriesView } from "@/components/category/category-list";
+import {
+  FilterType,
+  BrandType,
+  LocationType,
+  CategoryType,
+  ColorType,
+  MaterialType,
+  SizeType,
+} from "@/lib/type";
+import { useGetFilters } from "@/lib/data/get-filters";
 
 export default function Filter() {
   const [selectedOption, setSelectedOption] = useState("");
   const [isToggled, setIsToggled] = useState(false);
+  const { data: filters, error: postError, fetchStatus } = useGetFilters();
+  if (postError || !filters) {
+    return postError?.message;
+  }
+  const { brands, colors, categories, materials, sizes } = filters;
 
   const handleOptionClick = (optionName: string) => {
     setSelectedOption(optionName);
@@ -86,22 +93,27 @@ export default function Filter() {
         <div className="col-span-1 flex flex-col gap-10">
           <div className="flex flex-col gap-5">
             <p className="text-md font-semibold">Brand</p>
-            {brands.slice(0, 4).map((brand) => (
-              <div className="flex items-center space-x-2" key={brand.name}>
-                <Checkbox id={brand.name} />
-                <label
-                  htmlFor={brand.name}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
+            <ScrollArea className="max-h-40">
+              {brands.map((brand: BrandType) => (
+                <div
+                  className="flex items-center space-x-2 mb-5"
+                  key={brand.id}
                 >
-                  {brand.name}
-                </label>
-              </div>
-            ))}
+                  <Checkbox id={brand.id} />
+                  <label
+                    htmlFor={brand.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
+                  >
+                    {brand.name}
+                  </label>
+                </div>
+              ))}
+            </ScrollArea>
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-md font-semibold">Colors</p>
             <ScrollArea className="max-h-40">
-              {colors.map((color) => (
+              {colors.map((color: ColorType) => (
                 <div
                   className="color-item flex items-center space-x-2 mb-5"
                   key={color.id}
@@ -122,31 +134,38 @@ export default function Filter() {
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-md font-semibold">Material</p>
-            {materials.map((material) => (
-              <div className="flex items-center space-x-2" key={material}>
-                <Checkbox id={material} />
-                <label
-                  htmlFor={material}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
+            <ScrollArea className="max-h-40">
+              {materials.map((material: MaterialType) => (
+                <div
+                  className="flex items-center space-x-2 mb-5"
+                  key={material.id}
                 >
-                  {material}
-                </label>
-              </div>
-            ))}
+                  <Checkbox id={material.id} />
+                  <label
+                    htmlFor={material.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
+                  >
+                    {material.name}
+                  </label>
+                </div>
+              ))}
+            </ScrollArea>
           </div>
           <div className="flex flex-col gap-5">
             <p className="text-md font-semibold">Size</p>
-            {sizes.map((size) => (
-              <div className="flex items-center space-x-2" key={size}>
-                <Checkbox id={size} />
-                <label
-                  htmlFor={size}
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
-                >
-                  {size}
-                </label>
-              </div>
-            ))}
+            <ScrollArea className="max-h-40">
+              {sizes.map((size: SizeType) => (
+                <div className="flex items-center space-x-2 mb-5" key={size.id}>
+                  <Checkbox id={size.id} />
+                  <label
+                    htmlFor={size.name}
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 capitalize"
+                  >
+                    {size.abbreviation}
+                  </label>
+                </div>
+              ))}
+            </ScrollArea>
           </div>
           <div className="flex flex-col gap-5 w-[60%]">
             <p className="text-md font-semibold">Price</p>
@@ -212,7 +231,7 @@ export default function Filter() {
           <div className="flex">
             <ScrollArea className="w-full">
               <ToggleGroup type="multiple">
-                {type.map((item) => (
+                {categories.map((item: CategoryType) => (
                   <ToggleGroupItem
                     key={item.id}
                     value="bold"
